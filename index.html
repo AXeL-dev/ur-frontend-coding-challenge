@@ -10,11 +10,19 @@
 
     <!-- CSS -->
     <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="custom.css">
 </head>
 <body ng-app="myApp">
 
     <!-- Container/Main Controller -->
     <div class="container" ng-controller="mainController">
+
+        <!-- Loading indicator -->
+        <div class="d-flex justify-content-center centered" ng-show="repositories.length == 0">
+            <div class="spinner-grow" role="status">
+                <span class="sr-only">Loading...</span>
+            </div>
+        </div>
 
         <!-- Cards -->
         <div class="card my-5" ng-repeat="repository in repositories">
