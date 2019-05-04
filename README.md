@@ -26,7 +26,7 @@ Other tools:
 - **Jquery** for easier ajax requests & mostly because it's required by bootstrap.
 - **ng-infinite-scroll** to load more results on page scroll.
 
-## FAQ
+## FAQ
 
 - You said that you prefer back-end programming, so why didn't you go for the [back-end coding challenge](https://github.com/hiddenfounders/web-coding-challenge/blob/master/coding-challenge.md) then?
 
