@@ -1,0 +1,31 @@
+{
+  "name": "ur-frontend-coding-challenge",
+  "version": "1.0.0",
+  "description": "United Remote front-end coding challenge",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AXeL-dev/ur-frontend-coding-challenge.git"
+  },
+  "keywords": [
+    "coding",
+    "challenge",
+    "front-end"
+  ],
+  "author": "AXeL",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/AXeL-dev/ur-frontend-coding-challenge/issues"
+  },
+  "homepage": "https://github.com/AXeL-dev/ur-frontend-coding-challenge#readme",
+  "dependencies": {
+    "angular": "^1.7.8",
+    "bootstrap": "^4.3.1",
+    "jquery": "^1.9.1",
+    "moment": "^2.24.0",
+    "popper.js": "^1.15.0"
+  }
+}
