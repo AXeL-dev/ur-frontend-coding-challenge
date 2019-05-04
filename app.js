@@ -14,6 +14,7 @@ app.controller('mainController', ['$scope', function($scope) {
   // init scope variables
   $scope.repositories = [];
   $scope.page = 1;
+  $scope.isLoading = false;
 
   // set API request url
   var fetchDate = moment().subtract(30, 'days').format('YYYY-MM-DD');
@@ -35,27 +36,33 @@ app.controller('mainController', ['$scope', function($scope) {
    * Get repositories data from API
    */
   $scope.loadMoreRepositories = function() {
-    var requestUrl = sourceUrl + ($scope.page > 1 ? '&page=' + $scope.page : '');
-    console.log(requestUrl);
+    if (! $scope.isLoading) {
+        var requestUrl = sourceUrl + ($scope.page > 1 ? '&page=' + $scope.page : '');
+        console.log(requestUrl);
 
-    $.ajax({
-      type: 'GET',
-      dataType: 'json',
-      url: requestUrl,
-      error: function ( result, status ) {
-        console.log(result);
-      },
-      success: function ( result, status ) {
-        console.log(result);
-        if (result.items) {
-            // add results
-            $scope.repositories = $scope.repositories.concat(result.items);
-            $scope.page++;
-            // update view
-            $scope.$apply();
-        }
-      }
-    });
+        $scope.isLoading = true;
+
+        $.ajax({
+          type: 'GET',
+          dataType: 'json',
+          url: requestUrl,
+          error: function ( result, status ) {
+            console.log(result);
+            $scope.isLoading = false;
+          },
+          success: function ( result, status ) {
+            console.log(result);
+            if (result.items) {
+                // add results
+                $scope.repositories = $scope.repositories.concat(result.items);
+                $scope.page++;
+                // update view
+                $scope.$apply();
+            }
+            $scope.isLoading = false;
+          }
+        });
+    }
   };
 
 }]);

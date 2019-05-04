@@ -17,13 +17,6 @@
     <!-- Container/Main Controller -->
     <div class="container" ng-controller="mainController">
 
-        <!-- Loading indicator -->
-        <div class="d-flex justify-content-center centered" ng-show="repositories.length == 0">
-            <div class="spinner-grow" role="status">
-                <span class="sr-only">Loading...</span>
-            </div>
-        </div>
-
         <!-- Cards -->
         <div infinite-scroll="loadMoreRepositories()">
             <div class="card my-5" ng-repeat="repository in repositories">
@@ -51,6 +44,13 @@
                     </button>
                     Submitted {{ timeInterval(repository.created_at) }} days ago by {{ repository.owner.login }}
                 </div>
+            </div>
+        </div>
+
+        <!-- Loading indicator -->
+        <div class="d-flex justify-content-center my-5" ng-class="{'centered': repositories.length == 0}" ng-show="repositories.length == 0 || isLoading">
+            <div ng-class="{'spinner-grow': repositories.length == 0, 'spinner-border': repositories.length > 0 && isLoading}" role="status">
+                <span class="sr-only">Loading...</span>
             </div>
         </div>
 
