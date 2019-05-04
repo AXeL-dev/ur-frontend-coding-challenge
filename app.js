@@ -37,10 +37,9 @@ app.controller('mainController', ['$scope', function($scope) {
 
   // scope functions
   $scope.timeInterval = function(date) {
-    todaysDate = moment(new Date());
-    repositoryCreationDate = moment(date);
-    var diffDays = todaysDate.diff(repositoryCreationDate, 'days');
-    return diffDays;
+    var todaysDate = moment(new Date());
+    var repositoryCreationDate = moment(date);
+    return todaysDate.diff(repositoryCreationDate, 'days');
   };
 
 }]);
