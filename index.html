@@ -42,7 +42,10 @@
                     <button type="button" class="btn btn-light border mr-2">
                       Issues : <span class="badge badge-secondary">{{ repository.open_issues_count }}</span>
                     </button>
-                    Submitted {{ timeInterval(repository.created_at) }} days ago by {{ repository.owner.login }}
+                    <span>
+                      Submitted {{ timeInterval(repository.created_at) }} days ago by 
+                      <a href="{{ repository.owner.html_url }}" target="_blank">{{ repository.owner.login }}</a>
+                    </span>
                 </div>
             </div>
         </div>
