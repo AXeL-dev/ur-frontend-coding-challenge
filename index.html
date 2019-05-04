@@ -25,30 +25,32 @@
         </div>
 
         <!-- Cards -->
-        <div class="card my-5" ng-repeat="repository in repositories">
-            <div class="row no-gutters p-3">
-                <div class="col-2">
-                    <a href="{{ repository.owner.html_url }}" target="_blank">
-                        <img class="img-fluid" src="{{ repository.owner.avatar_url }}" alt="Owner Avatar">
-                    </a>
-                </div>
-                <div class="col">
-                    <div class="card-block px-3">
-                        <h4 class="card-title">
-                            <a href="{{ repository.html_url }}" target="_blank">{{ repository.name }}</a>
-                        </h4>
-                        <p class="card-text">{{ repository.description }}</p>
+        <div infinite-scroll="loadMoreRepositories()">
+            <div class="card my-5" ng-repeat="repository in repositories">
+                <div class="row no-gutters p-3">
+                    <div class="col-2">
+                        <a href="{{ repository.owner.html_url }}" target="_blank">
+                            <img class="img-fluid" src="{{ repository.owner.avatar_url }}" alt="Owner Avatar">
+                        </a>
+                    </div>
+                    <div class="col">
+                        <div class="card-block px-3">
+                            <h4 class="card-title">
+                                <a href="{{ repository.html_url }}" target="_blank">{{ repository.name }}</a>
+                            </h4>
+                            <p class="card-text">{{ repository.description }}</p>
+                        </div>
                     </div>
                 </div>
-            </div>
-            <div class="card-footer w-100 text-muted">
-                <button type="button" class="btn btn-light border mr-2">
-                  Stars : <span class="badge badge-warning">{{ repository.stargazers_count }}</span>
-                </button>
-                <button type="button" class="btn btn-light border mr-2">
-                  Issues : <span class="badge badge-secondary">{{ repository.open_issues_count }}</span>
-                </button>
-                Submitted {{ timeInterval(repository.created_at) }} days ago by {{ repository.owner.login }}
+                <div class="card-footer w-100 text-muted">
+                    <button type="button" class="btn btn-light border mr-2">
+                      Stars : <span class="badge badge-warning">{{ repository.stargazers_count }}</span>
+                    </button>
+                    <button type="button" class="btn btn-light border mr-2">
+                      Issues : <span class="badge badge-secondary">{{ repository.open_issues_count }}</span>
+                    </button>
+                    Submitted {{ timeInterval(repository.created_at) }} days ago by {{ repository.owner.login }}
+                </div>
             </div>
         </div>
 
@@ -56,6 +58,7 @@
 
     <!-- JS -->
     <script src="node_modules/angular/angular.min.js"></script>
+    <script src="node_modules/ng-infinite-scroll/build/ng-infinite-scroll.min.js"></script>
     <script src="node_modules/moment/min/moment.min.js"></script>
     <script src="node_modules/jquery/jquery.min.js"></script>
     <script src="app.js"></script>
