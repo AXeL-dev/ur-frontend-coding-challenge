@@ -12,7 +12,7 @@ This repository is my own implementation of the [United Remote front-end coding 
  - Number of stars for the repo.
  - Number of issues for the repo.
  - Username and avatar of the owner.
-* [ ] As a User I should be able to keep scrolling and new results should appear (pagination).
+* [x] As a User I should be able to keep scrolling and new results should appear (pagination).
 
 ## Used technologies
 
@@ -24,6 +24,7 @@ Other tools:
 - **moment.js** for date manipulation.
 - **Bootstrap 4** for styling.
 - **Jquery** for easier ajax requests & mostly because it's required by bootstrap.
+- **ng-infinite-scroll** to load more results on page scroll.
 
 ## FAQ
 
