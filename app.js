@@ -35,7 +35,7 @@ app.controller('mainController', ['$scope', function($scope) {
   /**
    * Get repositories data from API
    */
-  $scope.loadMoreRepositories = function() {
+  $scope.loadMoreResults = function() {
     if (! $scope.isLoading) {
         var requestUrl = sourceUrl + ($scope.page > 1 ? '&page=' + $scope.page : '');
         console.log(requestUrl);
