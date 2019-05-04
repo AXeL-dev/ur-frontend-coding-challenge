@@ -37,10 +37,10 @@ app.controller('mainController', ['$scope', function($scope) {
    */
   $scope.loadMoreResults = function() {
     if (! $scope.isLoading) {
+        $scope.isLoading = true;
+
         var requestUrl = sourceUrl + ($scope.page > 1 ? '&page=' + $scope.page : '');
         console.log(requestUrl);
-
-        $scope.isLoading = true;
 
         $.ajax({
           type: 'GET',
