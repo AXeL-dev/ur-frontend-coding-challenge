@@ -10,7 +10,7 @@ var app = angular.module('myApp', ['infinite-scroll']);
 angular.module('infinite-scroll').value('THROTTLE_MILLISECONDS', 250);
 
 // Set controller
-app.controller('mainController', ['$scope', function($scope) {
+app.controller('mainController', ['$scope', '$http', function($scope, $http) {
   // init scope variables
   $scope.repositories = [];
   $scope.page = 1;
@@ -42,25 +42,20 @@ app.controller('mainController', ['$scope', function($scope) {
         var requestUrl = sourceUrl + ($scope.page > 1 ? '&page=' + $scope.page : '');
         console.log(requestUrl);
 
-        $.ajax({
-          type: 'GET',
-          dataType: 'json',
-          url: requestUrl,
-          error: function ( result, status ) {
-            console.log(result);
-            $scope.isLoading = false;
-          },
-          success: function ( result, status ) {
-            console.log(result);
-            if (result.items) {
-                // add results
-                $scope.repositories = $scope.repositories.concat(result.items);
-                $scope.page++;
-                // update view
-                $scope.$apply();
-            }
-            $scope.isLoading = false;
+        $http({
+          method : 'GET',
+          url : requestUrl
+        }).then(function mySuccess(response) {
+          console.log(response);
+          if (response.data.items) {
+            // add results
+            $scope.repositories = $scope.repositories.concat(response.data.items);
+            $scope.page++;
           }
+          $scope.isLoading = false;
+        }, function myError(response) {
+          console.log(response);
+          $scope.isLoading = false;
         });
     }
   };
