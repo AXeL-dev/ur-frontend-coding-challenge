@@ -45,7 +45,7 @@ app.controller('mainController', ['$scope', '$http', function($scope, $http) {
         $http({
           method : 'GET',
           url : requestUrl
-        }).then(function mySuccess(response) {
+        }).then(function onSuccess(response) {
           console.log(response);
           if (response.data.items) {
             // add results
@@ -53,7 +53,7 @@ app.controller('mainController', ['$scope', '$http', function($scope, $http) {
             $scope.page++;
           }
           $scope.isLoading = false;
-        }, function myError(response) {
+        }, function onError(response) {
           console.log(response);
           $scope.isLoading = false;
         });
