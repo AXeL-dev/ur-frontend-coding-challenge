@@ -25,7 +25,6 @@ Other tools:
 - **git** for version control.
 - **moment.js** for date manipulation.
 - **Bootstrap 4** for styling.
-- **Jquery** for easier ajax requests & mostly because it's required by bootstrap.
 - **ng-infinite-scroll** to load more results on page scroll.
 
 ## FAQ
