@@ -43,18 +43,21 @@ var app = new Vue({
 
           // do http request
           var vm = this;
-          axios.get(requestUrl).then(function(response) {
-            console.log(response);
-            if(response.data.items) {
-              // add results
-              vm.repositories = vm.repositories.concat(response.data.items);
-              vm.page++;
-            }
-          }).catch(function(error) {
-            console.log(error);
-          }).then(function() {
-            vm.isLoading = false;
-          });
+          axios.get(requestUrl)
+            .then(function(response) {
+              console.log(response);
+              if (response.data.items) {
+                // add results
+                vm.repositories = vm.repositories.concat(response.data.items);
+                vm.page++;
+              }
+            })
+            .catch(function(error) {
+              console.log(error);
+            })
+            .finally(function() {
+              vm.isLoading = false;
+            });
       }
     }
   }
