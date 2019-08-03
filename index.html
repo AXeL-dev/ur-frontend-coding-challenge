@@ -12,24 +12,24 @@
     <link rel="stylesheet" href="./node_modules/bootstrap/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="./custom.css">
 </head>
-<body ng-app="myApp" class="ng-cloak">
+<body>
 
-    <!-- Container/Main Controller -->
-    <div class="container my-5" ng-controller="mainController">
+    <!-- Container -->
+    <div id="app" class="container my-5" v-cloak>
 
         <!-- Cards -->
-        <div infinite-scroll="loadMoreResults()">
-            <div class="card mb-5" ng-repeat="repository in repositories">
+        <div v-infinite-scroll="loadMoreResults" infinite-scroll-disabled="isLoading" infinite-scroll-distance="10">
+            <div class="card mb-5" v-for="repository in repositories">
                 <div class="row no-gutters p-3">
                     <div class="col-2">
-                        <a href="{{ repository.owner.html_url }}" target="_blank">
-                            <img class="img-fluid" src="{{ repository.owner.avatar_url }}" alt="Owner Avatar">
+                        <a v-bind:href="repository.owner.html_url" target="_blank">
+                            <img class="img-fluid" v-bind:src="repository.owner.avatar_url" alt="Owner Avatar">
                         </a>
                     </div>
                     <div class="col">
                         <div class="card-block px-3">
                             <h4 class="card-title">
-                                <a href="{{ repository.html_url }}" target="_blank">{{ repository.name }}</a>
+                                <a v-bind:href="repository.html_url" target="_blank">{{ repository.name }}</a>
                             </h4>
                             <p class="card-text">{{ repository.description }}</p>
                         </div>
@@ -44,14 +44,14 @@
                     </button>
                     <span>
                       Submitted {{ timeInterval(repository.created_at) }} days ago by 
-                      <a href="{{ repository.owner.html_url }}" target="_blank">{{ repository.owner.login }}</a>
+                      <a v-bind:href="repository.owner.html_url" target="_blank">{{ repository.owner.login }}</a>
                     </span>
                 </div>
             </div>
         </div>
 
         <!-- Loading indicator -->
-        <div class="d-flex justify-content-center" ng-class="{'centered': repositories.length == 0}" ng-show="isLoading">
+        <div class="d-flex justify-content-center" v-bind:class="{ centered: repositories.length == 0 }" v-show="isLoading">
             <div class="spinner-border" role="status">
                 <span class="sr-only">Loading...</span>
             </div>
@@ -60,8 +60,9 @@
     </div>
 
     <!-- JS -->
-    <script src="./node_modules/angular/angular.min.js"></script>
-    <script src="./node_modules/ng-infinite-scroll/build/ng-infinite-scroll.min.js"></script>
+    <script src="./node_modules/vue/dist/vue.min.js"></script>
+    <script src="./node_modules/axios/dist/axios.min.js"></script>
+    <script src="./node_modules/vue-infinite-scroll/vue-infinite-scroll.js"></script>
     <script src="./node_modules/moment/min/moment.min.js"></script>
     <script src="./app.js"></script>
 </body>

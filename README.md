@@ -18,9 +18,10 @@ This repository is my own implementation of the [United Remote front-end coding 
 
 ## Used technologies
 
-- **Angularjs** as the main javascript library.
+- **Vue.js** as the main javascript library.
 - **npm** as my dependencies manager.
 - **git** for version control.
 - **moment.js** for date manipulation.
 - **Bootstrap 4** for styling.
-- **ng-infinite-scroll** to load more results on page scroll.
+- **vue-infinite-scroll** to load more results on page scroll.
+- **axios** for ajax requests.
