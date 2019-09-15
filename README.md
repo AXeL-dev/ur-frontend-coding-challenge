@@ -1,6 +1,28 @@
-# UrFrontendCodingChallenge
+# Front-end Coding Challenge
+
+This repository is my own implementation of the [United Remote front-end coding challenge](https://github.com/hiddenfounders/frontend-coding-challenge).
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 8.3.3.
+
+[View Demo](https://axel-dev.github.io/ur-frontend-coding-challenge/)
+
+## Implemented features
+
+* [x] As a User I should be able to list the most starred Github repos that were created in the last 30 days.
+* [x] As a User I should see the results as a list. One repository per row.
+* [x] As a User I should be able to see for each repo/row the following details :
+ - Repository name.
+ - Repository description.
+ - Number of stars for the repo.
+ - Number of issues for the repo.
+ - Username and avatar of the owner.
+* [x] As a User I should be able to keep scrolling and new results should appear (pagination).
+
+## Used technologies
+
+- **Angular**.
+- **Materialize-css** for styling.
+- **ngx-infinite-scroll** to load more results on page scroll.
 
 ## Development server
 
