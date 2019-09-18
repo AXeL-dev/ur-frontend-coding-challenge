@@ -29,7 +29,7 @@
       </div>
     </div>
   </div>
-  <div *ngIf="isLoading"
+  <div *ngIf="isLoading && viewInitialized"
     class="row"
     [ngClass]="{'centered': repositories.length === 0}">
     <div class="col s12 center-align">
