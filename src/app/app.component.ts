@@ -1,4 +1,4 @@
-import { Component, OnInit, AfterViewInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { DatePipe } from '@angular/common';
 import { Title } from '@angular/platform-browser';
@@ -8,11 +8,10 @@ import { Title } from '@angular/platform-browser';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent implements OnInit, AfterViewInit {
+export class AppComponent implements OnInit {
 
   repositories: any[] = [];
   isLoading: boolean = true;
-  viewInitialized: boolean = false;
   private currentPage: number = 1;
   private repositoriesCreationDate: string = '';
 
@@ -26,10 +25,6 @@ export class AppComponent implements OnInit, AfterViewInit {
 
   ngOnInit() {
     this.loadRepositories();
-  }
-
-  ngAfterViewInit() {
-    this.viewInitialized = true;
   }
 
   onScroll() {
