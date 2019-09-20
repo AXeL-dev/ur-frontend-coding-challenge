@@ -46,15 +46,16 @@ export class AppComponent implements OnInit, AfterViewInit {
       (repositories) => {
         this.repositories = this.repositories.concat(repositories.items);
         console.log(this.repositories);
-        this.isLoading = false;
       },
       (error) => {
         console.log(error);
+      },
+      () => {
         this.isLoading = false;
       });
   }
 
-  private getRepositories(date: string, page: number = 1, successCallback: (repositories) => void, errorCallback: (error) => void) {
+  private getRepositories(date: string, page: number = 1, successCallback: (repositories) => void, errorCallback: (error) => void, completeCallback: () => void) {
     const requestUrl = `https://api.github.com/search/repositories?q=created:>${date}&sort=stars&order=desc&page=${page}`;
     return this.httpClient.get(requestUrl).subscribe((repositories: any[]) => {
       this.currentPage++;
@@ -63,6 +64,8 @@ export class AppComponent implements OnInit, AfterViewInit {
     }, (error) => {
       console.log(requestUrl);
       errorCallback(error);
+    }, () => {
+      completeCallback();
     });
   }
 
