@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { DatePipe } from '@angular/common';
 import { Title } from '@angular/platform-browser';
+import { tap } from 'rxjs/operators';
 
 @Component({
   selector: 'app-root',
@@ -52,12 +53,14 @@ export class AppComponent implements OnInit {
 
   private getRepositories(date: string, page: number = 1, successCallback: (repositories) => void, errorCallback: (error) => void, completeCallback: () => void) {
     const requestUrl = `https://api.github.com/search/repositories?q=created:>${date}&sort=stars&order=desc&page=${page}`;
-    return this.httpClient.get(requestUrl).subscribe((repositories: any[]) => {
+    return this.httpClient.get(requestUrl).pipe(
+      tap(() => {
+        console.log(requestUrl);
+      })
+    ).subscribe((repositories: any[]) => {
       this.currentPage++;
-      console.log(requestUrl);
       successCallback(repositories);
     }, (error) => {
-      console.log(requestUrl);
       errorCallback(error);
     }, () => {
       completeCallback();
